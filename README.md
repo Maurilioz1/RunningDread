@@ -15,3 +15,9 @@
 • Total Compatibilidade com um JoyStick
 
 • Movimentos e Morte do Personagem
+
+[ Update 0.1 ]
+
+• Implementação da HUD
+
+• Correção de bugs
