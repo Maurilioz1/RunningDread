@@ -5,18 +5,22 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
+
     public static GameManager NewInstance;
+
+    public Transform PlayerPosition;
+    public Transform StartReference;
 
     public TextMeshProUGUI txtTime;
     public Text textStageTime;
     public Text txtScene;
     public int PlayerDeaths;
-    public float stageTime = 20.0f;
+    public float stageTime = 42.0f;
 
-    private void Awake()
-    {
+    public bool isDead;
+
+    private void Awake() {
         if (NewInstance == null)
             NewInstance = this;
         else if (NewInstance != this)
@@ -25,10 +29,18 @@ public class GameManager : MonoBehaviour
         txtScene.text = SceneManager.GetActiveScene().name;
     }
 
-    void Update()
-    {
+    private void Start() {
+        stageTime = InfoKeeper.instance.TimeLevel;
+        stageTime -= 2.0f;
+    }
+
+    void Update() {
         TempoSetup();
         DecreasingTime();
+
+        if (isDead) {
+            SceneManager.LoadScene(0);
+        }
     }
 
     private void TempoSetup() {
@@ -47,8 +59,10 @@ public class GameManager : MonoBehaviour
 
         if (stageTime > 0) {
             stageTime -= Time.deltaTime;
+            InfoKeeper.instance.TimeLevel = stageTime;
         } else {
             stageTime = 0;
+            InfoKeeper.instance.TimeLevel = stageTime;
         }
 
         textStageTime.text = stageTime.ToString("f1");

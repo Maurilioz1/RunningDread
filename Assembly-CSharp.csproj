@@ -63,6 +63,7 @@
     <Compile Include="Assets\Script\BackgroundSystem.cs" />
     <Compile Include="Assets\Script\CameraControl.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
+    <Compile Include="Assets\Script\InfoKeeper.cs" />
     <Compile Include="Assets\Script\PlayerControl.cs" />
     <Compile Include="Assets\Script\WorldGen.cs" />
     <Compile Include="Assets\Script\WorldSystem.cs" />

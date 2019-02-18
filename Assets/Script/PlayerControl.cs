@@ -78,8 +78,9 @@ public class PlayerControl : MonoBehaviour
             if ((!isSpecial) && (staminaBar.fillAmount == 1)) {
                 StartCoroutine(SpecialActive());
                 currentValueStamina = 0;
-            } else if ((!isSpecial) && (staminaBar.fillAmount == 1)) {
+            } else if ((!isSpecial) && (staminaBar.fillAmount < 1)) {
                 StartCoroutine(SpecialActive());
+                GameManager.NewInstance.stageTime -= 2.0f;
             }
         }
     }
